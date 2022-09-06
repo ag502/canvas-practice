@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Clock</title>
+
+    <style>
+      body {
+        background: #dddddd;
+      }
+
+      #canvas {
+        position: absolute;
+        left: 10px;
+        top: 1.5em;
+        margin: 20px;
+        border: thin solid #aaaaaa;
+      }
+
+      #snapShotImageElement {
+        position: absolute;
+        left: 10px;
+        top: 1.5em;
+        margin: 20px;
+        border: thin solid #aaaaaa;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <input id="snapShotButton" type="button" value="Take snapshot" />
+    </div>
+
+    <img id="snapShotImageElement" />
+
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script src="./clock.js"></script>
+  </body>
+</html>
