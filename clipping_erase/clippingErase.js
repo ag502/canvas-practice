@@ -85,6 +85,19 @@ function setErasePathForErase(shape, eraseWidth) {
   context.clip();
 }
 
+function test(shape, eraseWidth) {
+  context.beginPath();
+  context.arc(lastX, lastY, eraseWidth / 2 + ERASER_LINE_WIDTH, 0, Math.PI * 2);
+  context.clip();
+
+  context.clearRect(
+    lastX - eraseWidth / 2 - ERASER_LINE_WIDTH,
+    lastY - eraseWidth / 2 - ERASER_LINE_WIDTH,
+    eraseWidth + ERASER_LINE_WIDTH * 2,
+    eraseWidth + ERASER_LINE_WIDTH * 2
+  );
+}
+
 function setEraserAttributes() {
   context.lineWidth = ERASER_LINE_WIDTH;
   context.shadowColor = ERASER_SHADOW_STYLE;
@@ -99,6 +112,12 @@ function eraseLast() {
   context.save();
   setErasePathForErase("circle", 100);
   context.fill();
+  context.restore();
+}
+
+function test2() {
+  context.save();
+  test("circle", 100);
   context.restore();
 }
 
@@ -130,7 +149,8 @@ canvas.onmousemove = (e) => {
     e.preventDefault();
 
     const loc = windowToCanvas(e.clientX, e.clientY);
-    eraseLast();
+    // eraseLast();
+    test2();
     drawEraser(loc);
 
     lastX = loc.x;
